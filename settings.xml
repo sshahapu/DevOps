@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
+  <mirrors>
+    <mirror>
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://localhost:8081/repository/maven-public/</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>maven</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2/</url>
+          <releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+          <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+	<profile>
+      <id>Sonar</id>
+	  <activation>
+                <activeByDefault>true</activeByDefault>
+      </activation>
+	  <properties>
+	  <!-- Sonar Properties -->
+	  <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+	  <sonar.junit.reportPaths>target/surefire-reports/</sonar.junit.reportPaths>
+	  <sonar.jacoco.reportPaths>target/coverage-reports/jacoco-ut.exec/</sonar.jacoco.reportPaths>
+      <sonar.java.binaries>target/classes</sonar.java.binaries>
+	  <sonar.java.test.binaries>target/test-classes</sonar.java.test.binaries>
+	  <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+	  <sonar.login>edd680c813a553d734efb4593b82ae170c1afd8d</sonar.login>
+	  <sonar.host.url>http://localhost:9000/</sonar.host.url>
+	  </properties>
+    </profile>
+  </profiles>
+  <servers>
+	<server>
+	<id>nexus</id>
+	<username>admin</username>
+	<password>admin123</password>
+	</server>
+  </servers>
+  <activeProfiles>
+    <!--make the profile active all the time -->
+    <activeProfile>maven</activeProfile>
+  </activeProfiles>
+</settings>
