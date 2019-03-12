@@ -118,6 +118,8 @@
 				<configuration>
 					<url>http://localhost:8090/manager/text</url>
 					<server>TomcatServer</server>
+					<username>admin</username>
+                       			 <password>admin</password>
 					<path>/CounterWebApp</path>
 				</configuration>
 			</plugin>
