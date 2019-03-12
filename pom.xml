@@ -118,7 +118,7 @@
 				<configuration>
 					<url>http://localhost:8090/manager/text</url>
 					<server>TomcatServer</server>
-					<path>/CounterWebApp</path>
+					<path>target/CounterWebApp</path>
 				</configuration>
 			</plugin>
 		</plugins>
